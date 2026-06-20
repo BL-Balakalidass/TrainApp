@@ -1,47 +1,58 @@
-import service.TrainConsistManager;
+import model.GoodsBogie;
+import service.SafetyComplianceService;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println("==============================");
+        System.out.println("=== Train Consist Management App ===");
 
-        System.out.println("Train Consist Management App");
+        List<GoodsBogie> goodsBogies =
+                new ArrayList<>();
 
-        System.out.println("==============================");
+        goodsBogies.add(
+                new GoodsBogie(
+                        "Rectangular",
+                        "Coal"));
 
-        TrainConsistManager manager =
-                new TrainConsistManager();
+        goodsBogies.add(
+                new GoodsBogie(
+                        "Cylindrical",
+                        "Petroleum"));
 
-        String trainId = "TRN-1234";
-
-        String cargoCode = "PET-AB";
+        goodsBogies.add(
+                new GoodsBogie(
+                        "Rectangular",
+                        "Steel"));
 
         System.out.println();
 
-        System.out.println("Train ID : " + trainId);
+        System.out.println("Goods Bogies");
 
-        if (manager.validateTrainId(trainId)) {
+        for (GoodsBogie bogie : goodsBogies) {
 
-            System.out.println("Train ID is Valid");
-
-        } else {
-
-            System.out.println("Train ID is Invalid");
+            System.out.println(bogie);
 
         }
 
+        SafetyComplianceService service =
+                new SafetyComplianceService();
+
+        boolean safe =
+                service.checkSafetyCompliance(goodsBogies);
+
         System.out.println();
 
-        System.out.println("Cargo Code : " + cargoCode);
+        if (safe) {
 
-        if (manager.validateCargoCode(cargoCode)) {
-
-            System.out.println("Cargo Code is Valid");
+            System.out.println("Train Safety Status : SAFE");
 
         } else {
 
-            System.out.println("Cargo Code is Invalid");
+            System.out.println("Train Safety Status : NOT SAFE");
 
         }
 
