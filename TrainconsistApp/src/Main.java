@@ -1,3 +1,5 @@
+import java.util.List;
+
 import model.Bogie;
 import service.TrainConsistManager;
 
@@ -32,19 +34,30 @@ public class Main {
                         "First Class",
                         24));
 
-        System.out.println();
+        manager.addPassengerBogie(
 
-        System.out.println("Before Sorting");
-
-        manager.displayBogies();
-
-        manager.sortByCapacity();
+                new Bogie(
+                        "General",
+                        90));
 
         System.out.println();
 
-        System.out.println("After Sorting");
+        System.out.println("All Passenger Bogies");
 
         manager.displayBogies();
+
+        List<Bogie> filteredBogies =
+                manager.filterHighCapacityBogies();
+
+        System.out.println();
+
+        System.out.println("Filtered Bogies (Capacity > 60)");
+
+        for (Bogie bogie : filteredBogies) {
+
+            System.out.println(bogie);
+
+        }
 
     }
 
