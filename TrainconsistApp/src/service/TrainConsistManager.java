@@ -1,49 +1,56 @@
 package service;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+
+import model.Bogie;
 
 public class TrainConsistManager {
 
-    // UC6 : Bogie -> Capacity Mapping
-
-    private Map<String, Integer> bogieCapacityMap;
+    private List<Bogie> passengerBogies;
 
     public TrainConsistManager() {
 
-        bogieCapacityMap = new HashMap<>();
+        passengerBogies = new ArrayList<>();
 
     }
 
-    // Add Bogie Capacity
+    // Add Bogie
 
-    public void addBogieCapacity(String bogieName,
-                                 int capacity) {
+    public void addPassengerBogie(Bogie bogie) {
 
-        bogieCapacityMap.put(bogieName, capacity);
-
-        System.out.println(
-                bogieName +
-                        " capacity added successfully.");
+        passengerBogies.add(bogie);
 
     }
 
-    // Display Capacity Details
+    // Sort by Capacity
 
-    public void displayCapacityDetails() {
+    public void sortByCapacity() {
+
+        passengerBogies.sort(
+
+                Comparator.comparingInt(
+
+                        Bogie::getCapacity
+
+                )
+
+        );
+
+    }
+
+    // Display Bogies
+
+    public void displayBogies() {
 
         System.out.println();
 
-        System.out.println("===== Bogie Capacity Details =====");
+        System.out.println("===== Passenger Bogies =====");
 
-        for (Map.Entry<String, Integer> entry :
-                bogieCapacityMap.entrySet()) {
+        for (Bogie bogie : passengerBogies) {
 
-            System.out.println(
-                    "Bogie : " +
-                            entry.getKey() +
-                            " | Capacity : " +
-                            entry.getValue());
+            System.out.println(bogie);
 
         }
 

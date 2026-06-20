@@ -2,24 +2,33 @@ package model;
 
 public class Bogie {
 
-    private String bogieId;
+    private String name;
+    private int capacity;
 
-    public Bogie(String bogieId) {
+    public Bogie(String name, int capacity) {
 
-        this.bogieId = bogieId;
+        this.name = name;
+        this.capacity = capacity;
 
     }
 
-    public String getBogieId() {
+    public String getName() {
 
-        return bogieId;
+        return name;
+
+    }
+
+    public int getCapacity() {
+
+        return capacity;
 
     }
 
     @Override
     public String toString() {
 
-        return bogieId;
+        return "Bogie : " + name +
+                " | Capacity : " + capacity;
 
     }
 
