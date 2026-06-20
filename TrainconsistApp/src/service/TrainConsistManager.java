@@ -1,55 +1,37 @@
 package service;
 
-import model.Bogie;
-
-import java.util.ArrayList;
-import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class TrainConsistManager {
 
-    private List<Bogie> bogieList;
+    // Train ID Pattern
+    private static final Pattern TRAIN_PATTERN =
+            Pattern.compile("TRN-\\d{4}");
 
-    public TrainConsistManager() {
+    // Cargo Code Pattern
+    private static final Pattern CARGO_PATTERN =
+            Pattern.compile("PET-[A-Z]{2}");
 
-        bogieList = new ArrayList<>();
+    // Validate Train ID
 
-    }
+    public boolean validateTrainId(String trainId) {
 
-    // Add Bogie
+        Matcher matcher =
+                TRAIN_PATTERN.matcher(trainId);
 
-    public void addBogie(Bogie bogie) {
-
-        bogieList.add(bogie);
-
-    }
-
-    // Display Bogies
-
-    public void displayBogies() {
-
-        System.out.println();
-
-        System.out.println("===== Train Bogies =====");
-
-        for (Bogie bogie : bogieList) {
-
-            System.out.println(bogie);
-
-        }
+        return matcher.matches();
 
     }
 
-    // UC10 : Total Seat Count
+    // Validate Cargo Code
 
-    public int calculateTotalCapacity() {
+    public boolean validateCargoCode(String cargoCode) {
 
-        return bogieList
+        Matcher matcher =
+                CARGO_PATTERN.matcher(cargoCode);
 
-                .stream()
-
-                .map(Bogie::getCapacity)
-
-                .reduce(0, Integer::sum);
+        return matcher.matches();
 
     }
 
