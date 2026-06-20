@@ -1,47 +1,51 @@
 package service;
 
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
 
 public class TrainConsistManager {
 
-    // UC5
+    // UC6 : Bogie -> Capacity Mapping
 
-    private Set<String> trainFormation;
+    private Map<String, Integer> bogieCapacityMap;
 
     public TrainConsistManager() {
 
-        trainFormation = new LinkedHashSet<>();
+        bogieCapacityMap = new HashMap<>();
 
     }
 
-    // Attach Bogie
+    // Add Bogie Capacity
 
-    public void attachBogie(String bogie) {
+    public void addBogieCapacity(String bogieName,
+                                 int capacity) {
 
-        if (trainFormation.add(bogie)) {
+        bogieCapacityMap.put(bogieName, capacity);
 
-            System.out.println(
-                    bogie + " attached successfully.");
-
-        } else {
-
-            System.out.println(
-                    bogie + " already exists. Duplicate ignored.");
-
-        }
+        System.out.println(
+                bogieName +
+                        " capacity added successfully.");
 
     }
 
-    // Display Formation
+    // Display Capacity Details
 
-    public void displayFormation() {
+    public void displayCapacityDetails() {
 
         System.out.println();
 
-        System.out.println("===== Train Formation =====");
+        System.out.println("===== Bogie Capacity Details =====");
 
-        System.out.println(trainFormation);
+        for (Map.Entry<String, Integer> entry :
+                bogieCapacityMap.entrySet()) {
+
+            System.out.println(
+                    "Bogie : " +
+                            entry.getKey() +
+                            " | Capacity : " +
+                            entry.getValue());
+
+        }
 
     }
 
