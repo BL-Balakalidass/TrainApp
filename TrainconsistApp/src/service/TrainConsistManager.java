@@ -1,39 +1,27 @@
 package service;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.stream.Collectors;
-
 import model.Bogie;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class TrainConsistManager {
 
-    private List<Bogie> passengerBogies;
+    private List<Bogie> bogieList;
 
     public TrainConsistManager() {
 
-        passengerBogies = new ArrayList<>();
+        bogieList = new ArrayList<>();
 
     }
 
-    // Add Passenger Bogie
+    // Add Bogie
 
-    public void addPassengerBogie(Bogie bogie) {
+    public void addBogie(Bogie bogie) {
 
-        passengerBogies.add(bogie);
-
-    }
-
-    // Sort by Capacity (UC7)
-
-    public void sortByCapacity() {
-
-        passengerBogies.sort(
-
-                Comparator.comparingInt(
-
-                        Bogie::getCapacity));
+        bogieList.add(bogie);
 
     }
 
@@ -43,9 +31,9 @@ public class TrainConsistManager {
 
         System.out.println();
 
-        System.out.println("===== Passenger Bogies =====");
+        System.out.println("===== All Bogies =====");
 
-        for (Bogie bogie : passengerBogies) {
+        for (Bogie bogie : bogieList) {
 
             System.out.println(bogie);
 
@@ -53,21 +41,23 @@ public class TrainConsistManager {
 
     }
 
-    // UC8 : Filter Capacity > 60
+    // UC9 : Group by Type
 
-    public List<Bogie> filterHighCapacityBogies() {
+    public Map<String, List<Bogie>> groupBogiesByType() {
 
-        return passengerBogies
+        return bogieList
 
                 .stream()
 
-                .filter(
+                .collect(
 
-                        bogie -> bogie.getCapacity() > 60
+                        Collectors.groupingBy(
 
-                )
+                                Bogie::getType
 
-                .collect(Collectors.toList());
+                        )
+
+                );
 
     }
 
