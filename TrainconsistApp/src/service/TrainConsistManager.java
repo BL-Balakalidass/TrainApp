@@ -1,74 +1,67 @@
 package service;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class TrainConsistManager {
 
+    // UC2 - Passenger Bogies
+
     private List<String> passengerBogies;
+
+    // UC3 - Unique Bogie IDs
+
+    private Set<String> bogieIds;
 
     public TrainConsistManager() {
 
         passengerBogies = new ArrayList<>();
 
+        bogieIds = new HashSet<>();
+
     }
 
-    // Add Passenger Bogie
+    // UC2 Methods
 
     public void addPassengerBogie(String bogieType) {
 
         passengerBogies.add(bogieType);
 
-        System.out.println(
-                bogieType + " added successfully.");
-
     }
-
-    // Remove Passenger Bogie
-
-    public void removePassengerBogie(String bogieType) {
-
-        if (passengerBogies.remove(bogieType)) {
-
-            System.out.println(
-                    bogieType + " removed successfully.");
-
-        } else {
-
-            System.out.println(
-                    bogieType + " not found.");
-
-        }
-
-    }
-
-    // Check Existence
-
-    public void checkPassengerBogie(String bogieType) {
-
-        if (passengerBogies.contains(bogieType)) {
-
-            System.out.println(
-                    bogieType + " exists in the consist.");
-
-        } else {
-
-            System.out.println(
-                    bogieType + " does not exist.");
-
-        }
-
-    }
-
-    // Display Passenger Bogies
 
     public void displayPassengerBogies() {
 
         System.out.println();
 
-        System.out.println("===== Passenger Bogies =====");
+        System.out.println("Passenger Bogies : " + passengerBogies);
 
-        System.out.println(passengerBogies);
+    }
+
+    // UC3 Methods
+
+    public void addBogieId(String bogieId) {
+
+        if (bogieIds.add(bogieId)) {
+
+            System.out.println(bogieId + " added successfully.");
+
+        } else {
+
+            System.out.println(bogieId + " already exists.");
+
+        }
+
+    }
+
+    public void displayBogieIds() {
+
+        System.out.println();
+
+        System.out.println("===== Unique Bogie IDs =====");
+
+        System.out.println(bogieIds);
 
     }
 
