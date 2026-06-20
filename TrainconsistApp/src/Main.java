@@ -1,7 +1,8 @@
-import java.util.List;
-
 import model.Bogie;
 import service.TrainConsistManager;
+
+import java.util.List;
+import java.util.Map;
 
 public class Main {
 
@@ -16,46 +17,62 @@ public class Main {
         TrainConsistManager manager =
                 new TrainConsistManager();
 
-        manager.addPassengerBogie(
+        manager.addBogie(
 
                 new Bogie(
                         "Sleeper",
+                        "Passenger",
                         72));
 
-        manager.addPassengerBogie(
+        manager.addBogie(
 
                 new Bogie(
                         "AC Chair",
+                        "Passenger",
                         56));
 
-        manager.addPassengerBogie(
+        manager.addBogie(
 
                 new Bogie(
                         "First Class",
+                        "Passenger",
                         24));
 
-        manager.addPassengerBogie(
+        manager.addBogie(
 
                 new Bogie(
-                        "General",
-                        90));
+                        "Cargo Box",
+                        "Goods",
+                        100));
 
-        System.out.println();
+        manager.addBogie(
 
-        System.out.println("All Passenger Bogies");
+                new Bogie(
+                        "Oil Tank",
+                        "Goods",
+                        150));
 
         manager.displayBogies();
 
-        List<Bogie> filteredBogies =
-                manager.filterHighCapacityBogies();
+        Map<String, List<Bogie>> groupedBogies =
+                manager.groupBogiesByType();
 
         System.out.println();
 
-        System.out.println("Filtered Bogies (Capacity > 60)");
+        System.out.println("===== Grouped Bogies =====");
 
-        for (Bogie bogie : filteredBogies) {
+        for (Map.Entry<String, List<Bogie>> entry :
+                groupedBogies.entrySet()) {
 
-            System.out.println(bogie);
+            System.out.println();
+
+            System.out.println(entry.getKey());
+
+            for (Bogie bogie : entry.getValue()) {
+
+                System.out.println("   " + bogie);
+
+            }
 
         }
 
