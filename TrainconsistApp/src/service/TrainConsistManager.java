@@ -1,76 +1,47 @@
 package service;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class TrainConsistManager {
 
-    // UC2
+    // UC5
 
-    private List<String> passengerBogies;
-
-    // UC3
-
-    private Set<String> bogieIds;
-
-    // UC4
-
-    private LinkedList<String> trainConsist;
+    private Set<String> trainFormation;
 
     public TrainConsistManager() {
 
-        passengerBogies = new ArrayList<>();
-
-        bogieIds = new HashSet<>();
-
-        trainConsist = new LinkedList<>();
+        trainFormation = new LinkedHashSet<>();
 
     }
 
-    // UC4 Methods
+    // Attach Bogie
 
-    public void createTrainConsist() {
+    public void attachBogie(String bogie) {
 
-        trainConsist.add("Engine");
+        if (trainFormation.add(bogie)) {
 
-        trainConsist.add("Sleeper");
+            System.out.println(
+                    bogie + " attached successfully.");
 
-        trainConsist.add("AC");
+        } else {
 
-        trainConsist.add("Cargo");
+            System.out.println(
+                    bogie + " already exists. Duplicate ignored.");
 
-        trainConsist.add("Guard");
-
-    }
-
-    public void insertPantryCar() {
-
-        trainConsist.add(2, "Pantry");
+        }
 
     }
 
-    public void removeFirstBogie() {
+    // Display Formation
 
-        trainConsist.removeFirst();
-
-    }
-
-    public void removeLastBogie() {
-
-        trainConsist.removeLast();
-
-    }
-
-    public void displayTrainConsist() {
+    public void displayFormation() {
 
         System.out.println();
 
-        System.out.println("===== Train Consist =====");
+        System.out.println("===== Train Formation =====");
 
-        System.out.println(trainConsist);
+        System.out.println(trainFormation);
 
     }
 

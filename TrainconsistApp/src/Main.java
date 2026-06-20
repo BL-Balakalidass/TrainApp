@@ -13,33 +13,19 @@ public class Main {
         TrainConsistManager manager =
                 new TrainConsistManager();
 
-        // UC4
+        manager.attachBogie("Engine");
 
-        manager.createTrainConsist();
+        manager.attachBogie("Sleeper");
 
-        System.out.println();
+        manager.attachBogie("Cargo");
 
-        System.out.println("Initial Train:");
+        manager.attachBogie("Guard");
 
-        manager.displayTrainConsist();
+        // Duplicate
 
-        manager.insertPantryCar();
+        manager.attachBogie("Sleeper");
 
-        System.out.println();
-
-        System.out.println("After Inserting Pantry:");
-
-        manager.displayTrainConsist();
-
-        manager.removeFirstBogie();
-
-        manager.removeLastBogie();
-
-        System.out.println();
-
-        System.out.println("Final Ordered Train:");
-
-        manager.displayTrainConsist();
+        manager.displayFormation();
 
     }
 
