@@ -13,7 +13,7 @@ public class Main {
         TrainConsistManager manager =
                 new TrainConsistManager();
 
-        // Add Passenger Bogies
+        // UC2
 
         manager.addPassengerBogie("Sleeper");
 
@@ -21,21 +21,21 @@ public class Main {
 
         manager.addPassengerBogie("First Class");
 
-        // Display List
-
         manager.displayPassengerBogies();
 
-        // Remove AC Chair
+        // UC3
 
-        manager.removePassengerBogie("AC Chair");
+        manager.addBogieId("BG101");
 
-        // Check Sleeper
+        manager.addBogieId("BG102");
 
-        manager.checkPassengerBogie("Sleeper");
+        manager.addBogieId("BG103");
 
-        // Final List
+        manager.addBogieId("BG101");
 
-        manager.displayPassengerBogies();
+        manager.addBogieId("BG102");
+
+        manager.displayBogieIds();
 
     }
 
