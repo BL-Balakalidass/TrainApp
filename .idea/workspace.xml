@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9b203842-f29c-4e53-b29d-68aca9c8d20d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/TrainconsistApp/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/TrainconsistApp/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrainconsistApp/src/service/TrainConsistManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/TrainconsistApp/src/service/TrainConsistManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +49,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "feature/uc11-regex-validation",
+    "git-widget-placeholder": "feature/uc12-safety-compliance",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "onboarding.tips.debug.path": "C:/Users/HP/Documents/AppbasedApplication/TrainApp/TrainconsistApp/src/Main.java",
