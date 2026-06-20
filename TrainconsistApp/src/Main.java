@@ -1,4 +1,3 @@
-import model.Bogie;
 import service.TrainConsistManager;
 
 public class Main {
@@ -14,44 +13,37 @@ public class Main {
         TrainConsistManager manager =
                 new TrainConsistManager();
 
-        manager.addBogie(
+        String trainId = "TRN-1234";
 
-                new Bogie(
-                        "Sleeper",
-                        "Passenger",
-                        72));
-
-        manager.addBogie(
-
-                new Bogie(
-                        "AC Chair",
-                        "Passenger",
-                        56));
-
-        manager.addBogie(
-
-                new Bogie(
-                        "First Class",
-                        "Passenger",
-                        24));
-
-        manager.addBogie(
-
-                new Bogie(
-                        "General",
-                        "Passenger",
-                        90));
-
-        manager.displayBogies();
-
-        int totalSeats =
-                manager.calculateTotalCapacity();
+        String cargoCode = "PET-AB";
 
         System.out.println();
 
-        System.out.println("===== Total Seating Capacity =====");
+        System.out.println("Train ID : " + trainId);
 
-        System.out.println("Total Seats : " + totalSeats);
+        if (manager.validateTrainId(trainId)) {
+
+            System.out.println("Train ID is Valid");
+
+        } else {
+
+            System.out.println("Train ID is Invalid");
+
+        }
+
+        System.out.println();
+
+        System.out.println("Cargo Code : " + cargoCode);
+
+        if (manager.validateCargoCode(cargoCode)) {
+
+            System.out.println("Cargo Code is Valid");
+
+        } else {
+
+            System.out.println("Cargo Code is Invalid");
+
+        }
 
     }
 
