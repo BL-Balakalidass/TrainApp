@@ -2,18 +2,23 @@ package service;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
 public class TrainConsistManager {
 
-    // UC2 - Passenger Bogies
+    // UC2
 
     private List<String> passengerBogies;
 
-    // UC3 - Unique Bogie IDs
+    // UC3
 
     private Set<String> bogieIds;
+
+    // UC4
+
+    private LinkedList<String> trainConsist;
 
     public TrainConsistManager() {
 
@@ -21,47 +26,51 @@ public class TrainConsistManager {
 
         bogieIds = new HashSet<>();
 
-    }
-
-    // UC2 Methods
-
-    public void addPassengerBogie(String bogieType) {
-
-        passengerBogies.add(bogieType);
+        trainConsist = new LinkedList<>();
 
     }
 
-    public void displayPassengerBogies() {
+    // UC4 Methods
+
+    public void createTrainConsist() {
+
+        trainConsist.add("Engine");
+
+        trainConsist.add("Sleeper");
+
+        trainConsist.add("AC");
+
+        trainConsist.add("Cargo");
+
+        trainConsist.add("Guard");
+
+    }
+
+    public void insertPantryCar() {
+
+        trainConsist.add(2, "Pantry");
+
+    }
+
+    public void removeFirstBogie() {
+
+        trainConsist.removeFirst();
+
+    }
+
+    public void removeLastBogie() {
+
+        trainConsist.removeLast();
+
+    }
+
+    public void displayTrainConsist() {
 
         System.out.println();
 
-        System.out.println("Passenger Bogies : " + passengerBogies);
+        System.out.println("===== Train Consist =====");
 
-    }
-
-    // UC3 Methods
-
-    public void addBogieId(String bogieId) {
-
-        if (bogieIds.add(bogieId)) {
-
-            System.out.println(bogieId + " added successfully.");
-
-        } else {
-
-            System.out.println(bogieId + " already exists.");
-
-        }
-
-    }
-
-    public void displayBogieIds() {
-
-        System.out.println();
-
-        System.out.println("===== Unique Bogie IDs =====");
-
-        System.out.println(bogieIds);
+        System.out.println(trainConsist);
 
     }
 
