@@ -1,9 +1,6 @@
 import model.Bogie;
 import service.TrainConsistManager;
 
-import java.util.List;
-import java.util.Map;
-
 public class Main {
 
     public static void main(String[] args) {
@@ -41,40 +38,20 @@ public class Main {
         manager.addBogie(
 
                 new Bogie(
-                        "Cargo Box",
-                        "Goods",
-                        100));
-
-        manager.addBogie(
-
-                new Bogie(
-                        "Oil Tank",
-                        "Goods",
-                        150));
+                        "General",
+                        "Passenger",
+                        90));
 
         manager.displayBogies();
 
-        Map<String, List<Bogie>> groupedBogies =
-                manager.groupBogiesByType();
+        int totalSeats =
+                manager.calculateTotalCapacity();
 
         System.out.println();
 
-        System.out.println("===== Grouped Bogies =====");
+        System.out.println("===== Total Seating Capacity =====");
 
-        for (Map.Entry<String, List<Bogie>> entry :
-                groupedBogies.entrySet()) {
-
-            System.out.println();
-
-            System.out.println(entry.getKey());
-
-            for (Bogie bogie : entry.getValue()) {
-
-                System.out.println("   " + bogie);
-
-            }
-
-        }
+        System.out.println("Total Seats : " + totalSeats);
 
     }
 
