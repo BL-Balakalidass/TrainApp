@@ -4,28 +4,32 @@ public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println("==============================");
+        System.out.println("===============================");
 
-        System.out.println("Train Consist Management App");
+        System.out.println(" Train Consist Management App ");
 
-        System.out.println("==============================");
+        System.out.println("===============================");
 
         TrainConsistManager manager =
                 new TrainConsistManager();
 
-        manager.attachBogie("Engine");
+        // Add Bogie Capacity Mapping
 
-        manager.attachBogie("Sleeper");
+        manager.addBogieCapacity(
+                "Sleeper",
+                72);
 
-        manager.attachBogie("Cargo");
+        manager.addBogieCapacity(
+                "AC Chair",
+                78);
 
-        manager.attachBogie("Guard");
+        manager.addBogieCapacity(
+                "First Class",
+                24);
 
-        // Duplicate
+        // Display Capacity
 
-        manager.attachBogie("Sleeper");
-
-        manager.displayFormation();
+        manager.displayCapacityDetails();
 
     }
 
