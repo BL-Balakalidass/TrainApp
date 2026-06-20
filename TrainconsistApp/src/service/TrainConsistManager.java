@@ -3,6 +3,7 @@ package service;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import model.Bogie;
 
@@ -16,7 +17,7 @@ public class TrainConsistManager {
 
     }
 
-    // Add Bogie
+    // Add Passenger Bogie
 
     public void addPassengerBogie(Bogie bogie) {
 
@@ -24,7 +25,7 @@ public class TrainConsistManager {
 
     }
 
-    // Sort by Capacity
+    // Sort by Capacity (UC7)
 
     public void sortByCapacity() {
 
@@ -32,15 +33,11 @@ public class TrainConsistManager {
 
                 Comparator.comparingInt(
 
-                        Bogie::getCapacity
-
-                )
-
-        );
+                        Bogie::getCapacity));
 
     }
 
-    // Display Bogies
+    // Display All Bogies
 
     public void displayBogies() {
 
@@ -53,6 +50,24 @@ public class TrainConsistManager {
             System.out.println(bogie);
 
         }
+
+    }
+
+    // UC8 : Filter Capacity > 60
+
+    public List<Bogie> filterHighCapacityBogies() {
+
+        return passengerBogies
+
+                .stream()
+
+                .filter(
+
+                        bogie -> bogie.getCapacity() > 60
+
+                )
+
+                .collect(Collectors.toList());
 
     }
 
