@@ -3,33 +3,72 @@ package service;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Bogie;
-
 public class TrainConsistManager {
 
-    // Dynamic Train Consist
-
-    private List<Bogie> consist;
+    private List<String> passengerBogies;
 
     public TrainConsistManager() {
 
-        consist = new ArrayList<>();
+        passengerBogies = new ArrayList<>();
 
     }
 
-    public List<Bogie> getConsist() {
+    // Add Passenger Bogie
 
-        return consist;
+    public void addPassengerBogie(String bogieType) {
+
+        passengerBogies.add(bogieType);
+
+        System.out.println(
+                bogieType + " added successfully.");
 
     }
 
-    public void displayConsistSummary() {
+    // Remove Passenger Bogie
+
+    public void removePassengerBogie(String bogieType) {
+
+        if (passengerBogies.remove(bogieType)) {
+
+            System.out.println(
+                    bogieType + " removed successfully.");
+
+        } else {
+
+            System.out.println(
+                    bogieType + " not found.");
+
+        }
+
+    }
+
+    // Check Existence
+
+    public void checkPassengerBogie(String bogieType) {
+
+        if (passengerBogies.contains(bogieType)) {
+
+            System.out.println(
+                    bogieType + " exists in the consist.");
+
+        } else {
+
+            System.out.println(
+                    bogieType + " does not exist.");
+
+        }
+
+    }
+
+    // Display Passenger Bogies
+
+    public void displayPassengerBogies() {
 
         System.out.println();
 
-        System.out.println("===== Train Consist Summary =====");
+        System.out.println("===== Passenger Bogies =====");
 
-        System.out.println("Total Bogies : " + consist.size());
+        System.out.println(passengerBogies);
 
     }
 
