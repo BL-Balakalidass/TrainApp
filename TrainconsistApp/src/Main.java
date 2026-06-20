@@ -4,38 +4,42 @@ public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println("===================================");
+        System.out.println("==============================");
 
-        System.out.println(" Train Consist Management App ");
+        System.out.println("Train Consist Management App");
 
-        System.out.println("===================================");
+        System.out.println("==============================");
 
         TrainConsistManager manager =
                 new TrainConsistManager();
 
-        // UC2
+        // UC4
 
-        manager.addPassengerBogie("Sleeper");
+        manager.createTrainConsist();
 
-        manager.addPassengerBogie("AC Chair");
+        System.out.println();
 
-        manager.addPassengerBogie("First Class");
+        System.out.println("Initial Train:");
 
-        manager.displayPassengerBogies();
+        manager.displayTrainConsist();
 
-        // UC3
+        manager.insertPantryCar();
 
-        manager.addBogieId("BG101");
+        System.out.println();
 
-        manager.addBogieId("BG102");
+        System.out.println("After Inserting Pantry:");
 
-        manager.addBogieId("BG103");
+        manager.displayTrainConsist();
 
-        manager.addBogieId("BG101");
+        manager.removeFirstBogie();
 
-        manager.addBogieId("BG102");
+        manager.removeLastBogie();
 
-        manager.displayBogieIds();
+        System.out.println();
+
+        System.out.println("Final Ordered Train:");
+
+        manager.displayTrainConsist();
 
     }
 
