@@ -4,8 +4,6 @@ import model.Bogie;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 public class TrainConsistManager {
 
@@ -25,13 +23,13 @@ public class TrainConsistManager {
 
     }
 
-    // Display All Bogies
+    // Display Bogies
 
     public void displayBogies() {
 
         System.out.println();
 
-        System.out.println("===== All Bogies =====");
+        System.out.println("===== Train Bogies =====");
 
         for (Bogie bogie : bogieList) {
 
@@ -41,23 +39,17 @@ public class TrainConsistManager {
 
     }
 
-    // UC9 : Group by Type
+    // UC10 : Total Seat Count
 
-    public Map<String, List<Bogie>> groupBogiesByType() {
+    public int calculateTotalCapacity() {
 
         return bogieList
 
                 .stream()
 
-                .collect(
+                .map(Bogie::getCapacity)
 
-                        Collectors.groupingBy(
-
-                                Bogie::getType
-
-                        )
-
-                );
+                .reduce(0, Integer::sum);
 
     }
 
