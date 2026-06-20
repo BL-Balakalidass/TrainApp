@@ -1,35 +1,50 @@
+import model.Bogie;
 import service.TrainConsistManager;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println("===============================");
+        System.out.println("==============================");
 
-        System.out.println(" Train Consist Management App ");
+        System.out.println("Train Consist Management App");
 
-        System.out.println("===============================");
+        System.out.println("==============================");
 
         TrainConsistManager manager =
                 new TrainConsistManager();
 
-        // Add Bogie Capacity Mapping
+        manager.addPassengerBogie(
 
-        manager.addBogieCapacity(
-                "Sleeper",
-                72);
+                new Bogie(
+                        "Sleeper",
+                        72));
 
-        manager.addBogieCapacity(
-                "AC Chair",
-                78);
+        manager.addPassengerBogie(
 
-        manager.addBogieCapacity(
-                "First Class",
-                24);
+                new Bogie(
+                        "AC Chair",
+                        56));
 
-        // Display Capacity
+        manager.addPassengerBogie(
 
-        manager.displayCapacityDetails();
+                new Bogie(
+                        "First Class",
+                        24));
+
+        System.out.println();
+
+        System.out.println("Before Sorting");
+
+        manager.displayBogies();
+
+        manager.sortByCapacity();
+
+        System.out.println();
+
+        System.out.println("After Sorting");
+
+        manager.displayBogies();
 
     }
 
