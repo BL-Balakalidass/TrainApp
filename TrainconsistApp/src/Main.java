@@ -1,4 +1,7 @@
+import model.Bogie;
 import model.GoodsBogie;
+
+import service.PerformanceBenchmarkService;
 import service.SafetyComplianceService;
 
 import java.util.ArrayList;
@@ -42,19 +45,48 @@ public class Main {
                 new SafetyComplianceService();
 
         boolean safe =
-                service.checkSafetyCompliance(goodsBogies);
+                service.checkSafetyCompliance(
+                        goodsBogies);
 
         System.out.println();
 
         if (safe) {
 
-            System.out.println("Train Safety Status : SAFE");
+            System.out.println(
+                    "Train Safety Status : SAFE");
 
         } else {
 
-            System.out.println("Train Safety Status : NOT SAFE");
+            System.out.println(
+                    "Train Safety Status : NOT SAFE");
 
         }
+
+        /*
+         * UC13 : Performance Comparison
+         */
+
+        List<Bogie> passengerBogies =
+                new ArrayList<>();
+
+        for (int i = 1; i <= 10000; i++) {
+
+            passengerBogies.add(
+
+                    new Bogie(
+                            "Bogie-" + i,
+                            "Passenger",
+                            (i % 100) + 1)
+
+            );
+
+        }
+
+        PerformanceBenchmarkService benchmarkService =
+                new PerformanceBenchmarkService();
+
+        benchmarkService.compareLoopVsStream(
+                passengerBogies);
 
     }
 
