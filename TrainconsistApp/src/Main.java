@@ -5,6 +5,7 @@ import service.CargoAssignmentService;
 import service.BubbleSortService;
 import service.ArraySortService;
 import service.LinearSearchService;
+import service.SearchValidationService;
 
 import service.PerformanceBenchmarkService;
 import service.SafetyComplianceService;
@@ -319,6 +320,37 @@ public class Main {
 
             System.out.println(
                     "Bogie Not Found");
+
+        }
+
+
+
+        /*
+         * UC20 : Exception Handling During Search Operations
+         */
+
+        System.out.println();
+
+        System.out.println(
+                "===== UC20 : Exception Handling During Search =====");
+
+        String[] emptyBogieIds = {};
+
+        SearchValidationService validationService =
+                new SearchValidationService();
+
+        try {
+
+            validationService.validateSearchData(
+                    emptyBogieIds);
+
+            System.out.println(
+                    "Search can proceed.");
+
+        } catch (IllegalStateException e) {
+
+            System.out.println(
+                    "Error : " + e.getMessage());
 
         }
 
