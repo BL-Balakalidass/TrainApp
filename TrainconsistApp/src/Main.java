@@ -3,6 +3,7 @@ import model.Bogie;
 import model.GoodsBogie;
 import service.CargoAssignmentService;
 import service.BubbleSortService;
+import service.ArraySortService;
 
 import service.PerformanceBenchmarkService;
 import service.SafetyComplianceService;
@@ -231,7 +232,46 @@ public class Main {
                 capacities);
 
 
+        /*
+         * UC17 : Arrays.sort()
+         */
 
+        System.out.println();
+
+        System.out.println(
+                "===== UC17 : Sort Bogie Names =====");
+
+        String[] bogieNames = {
+
+                "Sleeper",
+                "First Class",
+                "AC Chair",
+                "Cargo",
+                "Guard"
+
+        };
+
+        ArraySortService arraySortService =
+                new ArraySortService();
+
+        System.out.println();
+
+        System.out.println(
+                "Before Sorting :");
+
+        arraySortService.displayBogieNames(
+                bogieNames);
+
+        arraySortService.sortBogieNames(
+                bogieNames);
+
+        System.out.println();
+
+        System.out.println(
+                "After Sorting :");
+
+        arraySortService.displayBogieNames(
+                bogieNames);
     }
 
 }
