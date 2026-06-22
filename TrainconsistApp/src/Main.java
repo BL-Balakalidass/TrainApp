@@ -1,6 +1,7 @@
 import exception.InvalidCapacityException;
 import model.Bogie;
 import model.GoodsBogie;
+import service.CargoAssignmentService;
 
 import service.PerformanceBenchmarkService;
 import service.SafetyComplianceService;
@@ -150,6 +151,45 @@ public class Main {
                             + e.getMessage());
 
         }
+
+
+
+        /*
+         * UC15 : Safe Cargo Assignment
+         */
+
+        System.out.println();
+
+        System.out.println(
+                "===== UC15 : Safe Cargo Assignment =====");
+
+        CargoAssignmentService cargoService =
+                new CargoAssignmentService();
+
+        GoodsBogie safeBogie =
+
+                new GoodsBogie(
+                        "Cylindrical",
+                        "Petroleum");
+
+        cargoService.assignCargo(
+                safeBogie);
+
+        System.out.println();
+
+        GoodsBogie unsafeBogie =
+
+                new GoodsBogie(
+                        "Rectangular",
+                        "Petroleum");
+
+        cargoService.assignCargo(
+                unsafeBogie);
+
+        System.out.println();
+
+        System.out.println(
+                "Application Continues Successfully...");
 
     }
 
