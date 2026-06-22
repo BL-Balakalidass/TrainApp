@@ -1,5 +1,7 @@
 package model;
 
+import exception.InvalidCapacityException;
+
 public class Bogie {
 
     private String name;
@@ -8,12 +10,20 @@ public class Bogie {
 
     public Bogie(String name,
                  String type,
-                 int capacity) {
+                 int capacity)
+            throws InvalidCapacityException {
+
+        if (capacity <= 0) {
+
+            throw new InvalidCapacityException(
+                    "Invalid Capacity : "
+                            + capacity);
+
+        }
 
         this.name = name;
         this.type = type;
         this.capacity = capacity;
-
     }
 
     public String getName() {
@@ -32,9 +42,10 @@ public class Bogie {
     public String toString() {
 
         return name +
-                " (Capacity : " +
-                capacity +
-                ")";
+                " | Type : " +
+                type +
+                " | Capacity : " +
+                capacity;
 
     }
 

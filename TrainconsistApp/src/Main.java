@@ -1,3 +1,4 @@
+import exception.InvalidCapacityException;
 import model.Bogie;
 import model.GoodsBogie;
 
@@ -12,6 +13,10 @@ public class Main {
     public static void main(String[] args) {
 
         System.out.println("=== Train Consist Management App ===");
+
+        /*
+         * UC12
+         */
 
         List<GoodsBogie> goodsBogies =
                 new ArrayList<>();
@@ -41,11 +46,11 @@ public class Main {
 
         }
 
-        SafetyComplianceService service =
+        SafetyComplianceService safetyService =
                 new SafetyComplianceService();
 
         boolean safe =
-                service.checkSafetyCompliance(
+                safetyService.checkSafetyCompliance(
                         goodsBogies);
 
         System.out.println();
@@ -63,7 +68,7 @@ public class Main {
         }
 
         /*
-         * UC13 : Performance Comparison
+         * UC13
          */
 
         List<Bogie> passengerBogies =
@@ -71,14 +76,23 @@ public class Main {
 
         for (int i = 1; i <= 10000; i++) {
 
-            passengerBogies.add(
+            try {
 
-                    new Bogie(
-                            "Bogie-" + i,
-                            "Passenger",
-                            (i % 100) + 1)
+                passengerBogies.add(
 
-            );
+                        new Bogie(
+                                "Bogie-" + i,
+                                "Passenger",
+                                (i % 100) + 1)
+
+                );
+
+            } catch (InvalidCapacityException e) {
+
+                System.out.println(
+                        e.getMessage());
+
+            }
 
         }
 
@@ -87,6 +101,55 @@ public class Main {
 
         benchmarkService.compareLoopVsStream(
                 passengerBogies);
+
+        /*
+         * UC14
+         */
+
+        System.out.println();
+
+        System.out.println(
+                "===== UC14 : Capacity Validation =====");
+
+        try {
+
+            Bogie validBogie =
+
+                    new Bogie(
+                            "Sleeper",
+                            "Passenger",
+                            72);
+
+            System.out.println(
+                    "Created : "
+                            + validBogie);
+
+        } catch (InvalidCapacityException e) {
+
+            System.out.println(
+                    e.getMessage());
+
+        }
+
+        try {
+
+            Bogie invalidBogie =
+
+                    new Bogie(
+                            "Broken Coach",
+                            "Passenger",
+                            -10);
+
+            System.out.println(
+                    invalidBogie);
+
+        } catch (InvalidCapacityException e) {
+
+            System.out.println(
+                    "Exception : "
+                            + e.getMessage());
+
+        }
 
     }
 
