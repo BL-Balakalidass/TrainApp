@@ -4,6 +4,7 @@ import model.GoodsBogie;
 import service.CargoAssignmentService;
 import service.BubbleSortService;
 import service.ArraySortService;
+import service.LinearSearchService;
 
 import service.PerformanceBenchmarkService;
 import service.SafetyComplianceService;
@@ -272,6 +273,57 @@ public class Main {
 
         arraySortService.displayBogieNames(
                 bogieNames);
+
+
+        /*
+         * UC18 : Linear Search
+         */
+
+        System.out.println();
+
+        System.out.println(
+                "===== UC18 : Linear Search for Bogie ID =====");
+
+        String[] bogieIds = {
+
+                "BG101",
+                "BG205",
+                "BG110",
+                "BG320",
+                "BG450"
+
+        };
+
+        String searchKey = "BG320";
+
+        LinearSearchService linearSearchService =
+                new LinearSearchService();
+
+        boolean found =
+                linearSearchService.searchBogieId(
+                        bogieIds,
+                        searchKey);
+
+        System.out.println();
+
+        System.out.println(
+                "Searching for Bogie ID : "
+                        + searchKey);
+
+        if (found) {
+
+            System.out.println(
+                    "Bogie Found");
+
+        } else {
+
+            System.out.println(
+                    "Bogie Not Found");
+
+        }
+
     }
+
+
 
 }
