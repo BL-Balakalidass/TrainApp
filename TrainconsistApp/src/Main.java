@@ -2,6 +2,7 @@ import exception.InvalidCapacityException;
 import model.Bogie;
 import model.GoodsBogie;
 import service.CargoAssignmentService;
+import service.BubbleSortService;
 
 import service.PerformanceBenchmarkService;
 import service.SafetyComplianceService;
@@ -190,6 +191,46 @@ public class Main {
 
         System.out.println(
                 "Application Continues Successfully...");
+
+
+
+
+
+        /*
+         * UC16 : Bubble Sort
+         */
+
+        System.out.println();
+
+        System.out.println(
+                "===== UC16 : Sort Passenger Capacities =====");
+
+        int[] capacities =
+                {72, 56, 18, 120, 80, 40};
+
+        BubbleSortService bubbleSortService =
+                new BubbleSortService();
+
+        System.out.println();
+
+        System.out.println(
+                "Before Sorting :");
+
+        bubbleSortService.displayCapacities(
+                capacities);
+
+        bubbleSortService.sortCapacities(
+                capacities);
+
+        System.out.println();
+
+        System.out.println(
+                "After Sorting :");
+
+        bubbleSortService.displayCapacities(
+                capacities);
+
+
 
     }
 
